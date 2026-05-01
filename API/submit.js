@@ -1,14 +1,18 @@
 const express = require("express");
 const router = express.Router();
-
-router.post('/submit', (req, res) => {
-    const {name, age, email, talent} = req.body;
-
-    console.log("Received data:", {name, age, email, talent});
-
-    res.status(200).json({message: "Form submitted successfully"});
+const TalentModel = require('../models/Talent');
 
 
+router.post('/submit', async (req, res) => {
+  try {
+    const newEntry = new TalentModel(req.body);
+    await newEntry.save(); // This is the line that writes to the database
+    
+    res.status(200).json({ message: "Form submitted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Database Error", error });
+  }
 });
 
 module.exports = router;

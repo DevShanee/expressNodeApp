@@ -7,7 +7,16 @@ const app = express();
 app.get('/', (req, res) => {    
     })
 
+app.use(cors({
+  origin: '*' // In production, you should specify your frontend URL here
+}));
+app.use(express.json());
+
+const submitRoute = require('./API/submit');
+app.use('/api', submitRoute);
+
 //connection to mongodb
+
 
 //Connect to MongDB
 mongoose.connect(process.env.MONGO_URI)
