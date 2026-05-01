@@ -14,7 +14,7 @@ app.use(cors({
 app.use(express.json());
 
 const submitRoute = require('./API/submit');
-app.use("/submit", submitRoute);
+app.use("/api", submitRoute);
 
 //connection to mongodb
 
