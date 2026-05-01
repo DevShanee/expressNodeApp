@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const TalentModel = require('../models/talent');
+const TalentModel = require('../MODELS/talent');
 
 
 router.post('/submit', async (req, res) => {
