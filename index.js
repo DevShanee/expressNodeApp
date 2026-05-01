@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
     })
 
 app.use(cors({
-  origin: '*' // In production, you should specify your frontend URL here
+  origin: 'https://my-talent-form-app.onrender.com' 
 }));
 app.use(express.json());
 
